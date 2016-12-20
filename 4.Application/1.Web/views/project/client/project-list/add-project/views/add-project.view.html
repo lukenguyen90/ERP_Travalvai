@@ -1,0 +1,49 @@
+<div ng-controller="AddProjectCtrl as vmAddProject" ng-init="vmAddProject.init()" class="row small">
+
+    <legend class="popup-header"><span><strong>Add New Shipment</strong></span></legend>
+	<div>
+		<div class="col-md-6 form-group">
+			<input type='hidden' name="id_Project" id="id_Project" value="0">
+            <label><strong>Project</strong></label>
+            <input class="form-control" placeholder="" type="text" name="display" id="display" ng-model="vmAddProject.project.display" ng-pattern="vmAddProject.regex" required disabled>
+		</div>
+		<div class="col-md-6 form-group">
+	    	<label><strong>Date</strong></label>
+	    	<input class="form-control" placeholder="" type="text" name="date" id="date" ng-model="vmAddProject.project.date">
+		</div>
+	</div>
+	<div>
+		<div class="col-md-6 form-group">
+            <label><strong>Customer</strong></label>
+            <div>
+                 <ol class="nya-bs-select " ng-model="vmAddProject.project.customer" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="customer in vmAddProject.customers">
+                        <a>{{ customer.ID }} - {{ customer.NAME }}</a>
+                    </li>
+                </ol>
+            </div>
+		</div>
+		<div class="col-md-6 form-group">
+	    	<label><strong>Status</strong></label>
+            <div>
+        		<ol class="nya-bs-select " ng-model="vmAddProject.project.status" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="status in vmAddProject.statuses">
+                        <a>{{ status.pj_stat_desc }}</a>
+                    </li>
+                </ol>
+            </div>
+		</div>
+	</div>
+	<div>
+	  	<div class="col-md-12 form-group">
+            <label><strong>Description</strong></label>
+            <textarea class="form-control" name="description" id="description" ng-model="vmAddProject.project.description" ></textarea>
+        </div>
+	</div>
+	<div>
+        <div class="col-md-12 ">
+            <button type="button" class="btn btn-sm btn-info pull-right" ng-click="vmAddProject.createProject()">Create Project</button>
+        </div>
+    </div>										
+</div>                                                            
+

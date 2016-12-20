@@ -1,0 +1,5 @@
+ALTER TABLE `travalvai`.`project_comment` 
+CHANGE COLUMN `pj_com_comment` `pj_com_comment` TEXT CHARACTER SET 'utf8' NULL DEFAULT NULL ;
+ALTER TABLE `travalvai`.`pattern_part` 
+CHANGE COLUMN `pp_vn` `pp_vn` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL ,
+CHANGE COLUMN `pp_en` `pp_en` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL ;

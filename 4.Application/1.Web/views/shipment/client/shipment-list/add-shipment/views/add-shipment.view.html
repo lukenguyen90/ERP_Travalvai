@@ -1,0 +1,144 @@
+<div ng-controller="AddShipmentCtrl as vm" ng-init="vm.init()" class="row small">
+
+    <legend class="popup-header"><span> <strong> Add New Shipment</strong></span></legend>
+    <div>
+        <div class="col-md-3 form-group">
+            <label><strong>Open Date<strong> <span ng-if="vm.shipment.openDate === null" class="required">*</span></label>
+            <input required type="text" class="form-control" ng-model="vm.shipment.openDate" id="dateOpen" name="dateOpen" required>
+        </div>
+
+        <div class="col-md-3 form-group">
+            <label><strong>Freight Cost<strong></label>
+            <input type="text" class="form-control" ng-model="vm.shipment.freightCost" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/[^0-9\.]/g,'')">
+        </div>
+
+        <div class="col-md-3 form-group">
+            <label> <strong> Taxes </strong> </label>
+            <input type="text" class="form-control small dateInput" ng-model="vm.shipment.taxes" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/[^0-9\.]/g,'')">
+        </div>
+
+        <div class="col-md-3 form-group">
+            <label> <strong> Import Duty </strong> </label>
+            <input type="text" class="form-control small dateInput" ng-model="vm.shipment.importDuty" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/[^0-9\.]/g,'')">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-3 form-group">
+            <label> <strong> Estimate Delivery </strong> </label>
+            <input type="text" class="form-control small dateInput" id="dateEstimateDelivery" name="dateEstimateDelivery" ng-model="vm.shipment.estimateDelivery">
+        </div>
+        <div class="col-md-3 form-group">
+            <label> <strong> Delivery </strong> </label>
+            <input type="text" class="form-control small dateInput" id="dateDelivery" name="dateDelivery" ng-model="vm.shipment.delivery">
+        </div>
+
+        <div class="col-md-3 form-group">
+            <label> <strong> Estimated Arival </strong> </label>
+            <input type="text" class="form-control small dateInput" id="dateEstimatedArival" name="dateEstimatedArival" ng-model="vm.shipment.estimatedArival">
+        </div>
+        <div class="col-md-3 form-group">
+            <label> <strong> Arival </strong> </label>
+            <input type="text" class="form-control small dateInput" id="dateArival" name="dateArival" ng-model="vm.shipment.arival">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-3 form-group ">
+            <label><strong>Forwarder</strong> <span ng-if="vm.shipment.forwarder === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vm.shipment.forwarder" data-size="10 " data-live-search="true">
+                <li nya-bs-option="forwarder in vm.forwarders ">
+                    <a>
+                        {{ forwarder.NAME }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-3 form-group ">
+            <label><strong>Freight</strong> <span ng-if="vm.shipment.freight === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vm.shipment.freight" data-size="10 " data-live-search="true">
+                <li nya-bs-option="freight in vm.freights ">
+                    <a>
+                        {{ freight.fr_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+
+        <div class="col-md-3 form-group ">
+            <label><strong>Incoterm</strong> <span ng-if="vm.shipment.incoterm === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vm.shipment.incoterm" data-size="10 " data-live-search="true">
+                <li nya-bs-option="incoterm in vm.incoterms ">
+                    <a>
+                        {{ incoterm.ict_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-3 form-group ">
+            <label><strong>Shipment Type</strong> <span ng-if="vm.shipment.shipmentType === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vm.shipment.shipmentType" data-size="10 " data-live-search="true">
+                <li nya-bs-option="shipmentType in vm.shipmentTypes ">
+                    <a ng-click="vm.getShipmentTypeCurrent(shipmentType)">
+                        {{ shipmentType.st_code }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-3 form-group ">
+            <label><strong>Sender</strong> <span ng-if="vm.shipment.sender.description === null" class="required">*</span></label>
+            <input type="text" class="form-control small dateInput" id="shipmentDate" name="shipmentDate" ng-model="vm.shipment.sender.description" placeholder="" ng-disabled="true">
+        </div>
+        <div class="col-md-3 form-group ">
+            <div ng-if="vm.isShowZoneOptions()">
+                <label><strong>Zone</strong> <span ng-if="vm.shipment.zone === null" class="required">*</span></label>
+                <ol class="nya-bs-select " ng-model="vm.shipment.zone" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="zone in vm.zones">
+                        <a ng-click="vm.getAgents(zone.ID)">
+                            {{ zone.CODE }} - {{ zone.DES }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="col-md-3 form-group ">
+            <div ng-if="vm.isShowAgentOptions()">
+                <label><strong>Agent</strong> <span ng-if="vm.shipment.agent === null" class="required">*</span></label>
+                <ol class="nya-bs-select " ng-model="vm.shipment.agent" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="agent in vm.agents ">
+                        <a ng-click="vm.getCustomers(agent.ID)">
+                            {{ agent.CODE }} - {{ agent.DES }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="col-md-3 form-group ">
+            <div ng-if="vm.isShowCustomerOptions()">
+                <label><strong>Customer</strong> <span ng-if="vm.shipment.customer === null" class="required">*</span></label>
+                <ol class="nya-bs-select " ng-model="vm.shipment.customer" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="customer in vm.customers ">
+                        <a>
+                            {{ customer.ID }} - {{ customer.NAME }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-md-12">
+            <span class="pull-left font-normal">  (<span class="required">*</span>): Required field </span>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-12 ">
+            <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vm.createShipment()" ng-disabled="!vm.showAddShipment()">Create Shipment</button>
+        </div>
+    </div>
+
+
+</div>

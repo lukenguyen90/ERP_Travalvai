@@ -1,0 +1,77 @@
+<style>
+    #tbl-size-name-number_filter input {
+        height: 32px !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+    
+    #tbl-size-name-number.table tbody>tr>td {
+        font-size: 12px !important;
+        font-weight: normal !important;
+    }
+    
+    #sizeForm [class*="col-"] {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
+    
+    #sizeForm input {
+        height: 22px !important;
+        width: 100% !important;
+        font-size: 11px !important;
+        font-weight: normal !important;
+    }
+    
+    #sizeForm .form-control {
+        padding: 1px 1px !important;
+    }
+</style>
+<div class="row col-md-10" style="padding-left:0px; padding-right:0px" ng-controller="SizeNameNumberCtrl as vmSizeName" ng-init="vmSizeName.initSizeNumer()">
+    <div style="margin-top:3px">
+        <label class="radio-inline">
+                    <input type="radio" ng-value="0"  ng-click="vmSizeName.changeInputType(vmSizeName.inputType.manual)" name="rdEntry"  class="product-size" checked="checked">
+                            Manual Input
+                </label>
+
+        <label class="radio-inline">
+                    <input type="radio"  ng-value="1"  ng-click="vmSizeName.changeInputType(vmSizeName.inputType.csv) "  name="rdEntry" class="product-size">
+                            Import From Excel (CSV)
+                </label>
+    </div>
+    <div class="col-md-12">
+        <div ng-include="vmSizeName.tplInput"></div>
+    </div>
+    <div class="col-md-12" style="margin-top:3px">
+        <table datatable="ng" dt-instance="vmSizeName.instance" id='tbl-size-name-number' style="margin-bottom:5px;" class="table-responsive table-bshipmented table tbl-size">
+            <thead>
+                <tr>
+                    <th style="width:30%">Name</th>
+                    <th style="width:20%">Number</th>
+                    <th style="width:30%">Size</th>
+                    <th style="width:10%">Quantity</th>
+                    <th style="width:10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="size in vmSizeName.listSize">
+                    <td>{{ size.name}}</td>
+                    <td>{{ size.number}}</td>
+                    <td>{{ size.szd_size}}</td>
+                    <td class="text-center">{{ size.quantity}}</td>
+                    <td>
+                        <span class="txt-color-red btnDelete" title="Delete" ng-click="vmSizeName.deleteSize(size)">  
+                            <i class="ace-icon bigger-130 fa fa-trash-o"></i></span>
+                    </td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="text-right" colspan="3"><strong>Total<strong></td>
+                        <td class="text-center"><span ng-bind="vmSizeName.totalSizeQuantity"></span></td>
+                        <td class="text-center"></td>
+                    </tr>
+                </tfoot>
+            </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<style>
+    #tbl-product-list-size.table thead tr th {
+        font-size: 10px !important;
+        text-align: left !important;
+        padding-left: 2px !important;
+        font-weight: 700 !important;
+    }
+    
+    #tbl-product-list-size.table tbody tr td {
+        font-weight: normal !important;
+    }
+    
+    #tbl-product-list-size.table tfoot tr td,
+    tbody tr td {
+        font-size: 11px !important;
+        vertical-align: middle !important;
+        padding: 8px 1px !important;
+    }
+    
+    #tbl-product-list-size_wrapper {
+        width: 98.7% !important;
+    }
+</style>
+<div class="col-md-12" ng-controller="SizeFactoryCtrl as vmSize" ng-init="vmSize.init()">
+    <table id="tbl-product-list-size" class="table table-striped table-bordered" width="100%" datatable dt-options="vmSize.options" dt-columns="vmSize.columns" dt-instance="vmSize.instance">
+        <tfoot>
+            <tr></tr>
+        </tfoot>
+    </table>
+</div>

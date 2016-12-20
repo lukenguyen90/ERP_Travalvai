@@ -1,0 +1,2 @@
+ALTER TABLE `travalvai`.`product` 
+CHANGE COLUMN `pr_comment` `pr_comment` TEXT CHARACTER SET 'utf8' NULL DEFAULT NULL ;

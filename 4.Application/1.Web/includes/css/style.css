@@ -1,0 +1,325 @@
+        .select2-container {
+        width: 217px;
+    }
+    
+    .fa-lg.erp-logout {
+        font-size: 2.2em;
+        line-height: 1.5em;
+        vertical-align: -15%;
+    }
+    
+    .alert-login-fail {
+        margin-bottom: 5px;
+        margin-top: 10px;
+        font-size: 12px;
+        padding: 5px;
+        float: left;
+    }
+    
+    .highlight-Per {
+        background-color: #F0E68C;
+    }
+    
+    .customSearch {
+        float: left;
+        margin-left: 5px;
+        padding: 6px 15px;
+        margin-bottom: 5px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px #ccc;
+        background: #fff;
+        position: relative;
+        background: -webkit-linear-gradient(top, #fff 0, #f3f3f3 89%, #f9f9f9 100%);
+        background: -moz-linear-gradient(top, #fff 0, #f3f3f3 89%, #f9f9f9 100%);
+        background: -ms-linear-gradient(top, #fff 0, #f3f3f3 89%, #f9f9f9 100%);
+        background: -o-linear-gradient(top, #fff 0, #f3f3f3 89%, #f9f9f9 100%);
+        background: linear-gradient(top, #fff 0, #f3f3f3 89%, #f9f9f9 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f9f9f9', GradientType=0);
+    }
+    
+    .customSearch:hover {
+        cursor: pointer;
+        border: 1px solid #666;
+        background: #f3f3f3;
+        background: -webkit-linear-gradient(top, #f3f3f3 0, #e2e2e2 89%, #f4f4f4 100%);
+        background: -moz-linear-gradient(top, #f3f3f3 0, #e2e2e2 89%, #f4f4f4 100%);
+        background: -ms-linear-gradient(top, #f3f3f3 0, #e2e2e2 89%, #f4f4f4 100%);
+        background: -o-linear-gradient(top, #f3f3f3 0, #e2e2e2 89%, #f4f4f4 100%);
+        background: linear-gradient(top, #f3f3f3 0, #e2e2e2 89%, #f4f4f4 100%);
+        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f3f3f3', endColorstr='#f4f4f4', GradientType=0);
+    }
+    
+    #datatable_fixed_column_wrapper #datatable_fixed_column_filter label {
+        float: left;
+    }
+    
+    
+    
+    .bodySearch {
+        position: absolute;
+        padding: 15px;
+        border: 1px solid #999;
+        top: 100%;
+        right: 0px;
+        background: #fff;
+    }
+    
+    .div_minifyme {
+        position: relative;
+    }
+    
+    .margin-top-20 {
+        margin-top: 20px;
+    }
+    
+    .action {
+        color: #000;
+        padding: 0px 10px;
+        line-height: 23px;
+        font-weight: bold;
+        margin-right: 3px;
+    }
+    
+    .action-yellow {
+        background: #FFcc00;
+    }
+    
+    .action-orange {
+        background: #FF7f50;
+    }
+    
+    .action-red {
+        background: #FF0000;
+    }
+    
+    .action-blueViolet {
+        background: #6F2FA0;
+    }
+    
+    .action-blue {
+        background: #006FC0;
+    }
+    
+    .action-green {
+        background: #00fa9a;
+    }
+    
+    .action-pink {
+        background: #ff1493;
+    }
+    
+    legend.fcollapsible.selected:before {
+        content: "\f067";
+    }
+    
+    legend.fcollapsible:before {
+        content: "\f068";
+        margin-right: 10px;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    td span,
+    td a {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    .dataShow {
+        width: 44%;
+        float: right;
+        margin-right: 15px;
+        position: relative;
+    }
+    
+    .width-100p {
+        width: 100%;
+    }
+    
+    .form-horizontal .control-label.pull-right {
+        margin-right: 10px;
+    }
+    
+    .ui-datepicker {
+        z-index: 1151 !important;
+    }
+    
+    .ui-autocomplete {
+        z-index: 2000 !important;
+    }
+    
+    ul.ColVis_collection li label {
+        overflow: hidden;
+    }
+    
+    .table>thead>tr>th {
+        vertical-align: middle;
+    }
+    
+    .solidgauge {
+        width: 100%;
+        height: 300px;
+        float: left;
+    }
+    
+    .imgDocument {
+        float: left;
+        margin-right: 10px;
+        margin-top: 6px;
+    }
+    
+    .display-none {
+        display: none;
+    }
+    
+    .imgDocument a,
+    .detailDocument a {
+        color: #333;
+    }
+    
+    .detailDocument {
+        float: left;
+        width: 80%;
+    }
+    
+    .detailDocument h4 {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    .subtitleDocument {
+        text-transform: lowercase;
+    }
+    
+    .text-uppercase {
+        text-transform: uppercase;
+    }
+    
+    .desDocument {
+        margin-bottom: 0px;
+    }
+    
+    .table tr {
+        cursor: pointer;
+    }
+    
+    .tab-pane .form-horizontal {
+        margin-top: 15px;
+    }
+    
+    th .form-control.inputDate {
+        width: 95px !important;
+    }
+    
+    .icon-action {
+        width: 40px;
+    }
+    
+    .color-picker {
+        display: inline-block;
+        width: 90%;
+        position: relative;
+        top: -10px;
+        margin-right: 15px;
+    }
+    
+    div.meter {
+        position: relative;
+        width: 100%;
+        height: 25px;
+        border: 1px solid #b0b0b0;
+        margin-bottom: 20px;
+        /* viewing purposes */
+        -webkit-box-shadow: inset 0 3px 5px 0 #d3d0d0;
+        -moz-box-shadow: inset 0 3px 5px 0 #d3d0d0;
+        box-shadow: inset 0 3px 5px 0 #d3d0d0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px;
+    }
+    
+    div.meter span {
+        display: block;
+        height: 100%;
+        animation: grower 1s linear;
+        -moz-animation: grower 1s linear;
+        -webkit-animation: grower 1s linear;
+        -o-animation: grower 1s linear;
+        position: relative;
+        top: -1px;
+        left: -1px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+        border: 1px solid #3c84ad;
+        background: #6eb2d1;
+        background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent));
+        background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        -webkit-background-size: 45px 45px;
+        -moz-background-size: 45px 45px;
+        -o-background-size: 45px 45px;
+        background-size: 45px 45px;
+    }
+    
+    div.meter span:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 50%;
+        position: relative;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.03);
+    }
+    
+    div.meter p {
+        position: absolute;
+        top: 0;
+        margin: 0 10px;
+        line-height: 25px;
+        font-family: 'Helvetica';
+        font-weight: bold;
+        -webkit-font-smoothing: antialised;
+        font-size: 15px;
+        color: #333;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+    }
+    
+    @keyframes grower {
+        0% {
+            width: 0%;
+        }
+    }
+    
+    @-moz-keyframes grower {
+        0% {
+            width: 0%;
+        }
+    }
+    
+    @-webkit-keyframes grower {
+        0% {
+            width: 0%;
+        }
+    }
+    
+    @-o-keyframes grower {
+        0% {
+            width: 0%;
+        }
+        /********************************Login Page Style *************************/

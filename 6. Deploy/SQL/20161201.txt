@@ -1,0 +1,5 @@
+ALTER TABLE `travalvai`.`patterns` 
+CHANGE COLUMN `pt_notes` `pt_notes` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL
+
+ALTER TABLE `travalvai`.`pattern_variantions` 
+CHANGE COLUMN `pv_comment` `pv_comment` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL

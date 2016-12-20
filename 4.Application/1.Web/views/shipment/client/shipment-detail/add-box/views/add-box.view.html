@@ -1,0 +1,17 @@
+<div ng-controller="AddBoxCtrl as vm" ng-init="vm.init()" class="row small">
+
+
+    <legend class="popup-header"><span> <strong> Add Box</strong></span></legend>
+    <div class="col-md-12">
+        <uib-tabset active="vm.activeTab">
+            <uib-tab index="0" heading="Manipulation" ng-click="vmOrderList.showOrderListLines('#application.userType#')">
+
+            </uib-tab>
+            <uib-tab index="1" heading="Barcode Scanning" ng-click="vmOrderList.showOrderListResume('#application.userType#')">
+
+            </uib-tab>
+        </uib-tabset>
+    </div>
+
+
+</div>

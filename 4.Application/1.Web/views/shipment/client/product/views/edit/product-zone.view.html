@@ -1,0 +1,261 @@
+<style type="text/css" media="screen">
+    .modal-wrapper {}
+    
+    #product-ctrl .form-group {
+        margin-bottom: 4px !important;
+    }
+    
+    #product-ctrl .form-control {
+        height: 22px;
+        font-size: 12px;
+    }
+    
+    #product-ctrl .table-price {
+        width: 100% !important;
+    }
+    
+    #product-ctrl .table>thead>tr>th,
+    #product-ctrl .table>tbody>tr>th,
+    #product-ctrl .table>tfoot>tr>th,
+    #product-ctrl .table>thead>tr>td,
+    #product-ctrl .table>tbody>tr>td,
+    #product-ctrl .table>tfoot>tr>td {
+        padding: 2px !important;
+    }
+    
+    #product-ctrl .tbl-size.table tbody>tr>td {
+        vertical-align: middle;
+    }
+    
+    #product-ctrl .tbl-size.table tbody>tr>td>input {
+        line-height: 10px !important;
+        width: 30px !important;
+        font-size: 11px;
+    }
+    
+    #product-ctrl label.input-title {
+        margin-top: 1px !important;
+        margin-bottom: 3px !important;
+    }
+    
+    #product-ctrl input[type=radio].product-size {
+        margin-top: 1px !important;
+    }
+    
+    #product-ctrl ol>button.btn {
+        font-size: 12px !important;
+        line-height: 10px !important;
+    }
+    
+    #product-ctrl span.garment {
+        background-color: #eee;
+    }
+    
+    #product-ctrl .row {
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+    
+    #product-ctrl .nya-bs-select .btn {
+        height: 22px !important;
+    }
+    
+    #product-ctrl [class*="col-"] {
+        padding-right: 4px !important;
+        padding-left: 1px !important;
+    }
+    
+    #tabSize [class*="col-"] {
+        height: 38px !important;
+    }
+    
+    #tabSize .row {
+        overflow: hidden;
+    }
+    
+    #tabSize {
+        height: 38px !important;
+    }
+    
+    .font-normal {
+        font-weight: normal !important;
+    }
+</style>
+<div ng-controller="ProductCtrl as vmproduct" id="product-ctrl" class="row small modal-wrapper" ng-init="vmproduct.init()">
+    <legend class="popup-header" style="margin-left: -20px !important; width: 898px !important;"><span><strong>Add New Product<strong></span></legend>
+    <div class="col-md-12 ">
+        <div class="col-md-3" style="padding-right:12px !important">
+            <div>
+                <div class="col-md-4 form-group">
+                    <label class="input-title">Group</label>
+                </div>
+                <div class="col-md-8 form-group">
+                    <input type="text" class="form-control" ng-model="vmproduct.shipment.group">
+                </div>
+            </div>
+            <div>
+                <div class="col-md-4 form-group">
+                    <label class="input-title">Project</label>
+                </div>
+                <div class="col-md-8 form-group">
+                    <ol class="nya-bs-select" title="Choose project" ng-model="vmproduct.project" data-size="10 " data-live-search="true">
+                        <li nya-bs-option="proj in vmproduct.projects ">
+                            <a ng-click="vmproduct.getProducts(proj.id_Project)">
+                                {{proj.id_display}} - {{proj.pj_description}}
+                            </a>
+                        </li>
+                    </ol>
+
+                </div>
+            </div>
+            <div>
+                <div class="col-md-4 form-group">
+                    <label class="input-title">Product</label>
+                </div>
+                <div class="col-md-8 form-group">
+                    <ol class="nya-bs-select" title="Choose product" ng-model="vmproduct.shipment.product" data-size="10 " data-live-search="true">
+                        <li nya-bs-option="productDetail in vmproduct.products">
+                            <a ng-click="vmproduct.changeProduct(productDetail)">
+                                <div class="row" style="display:inline-block;">
+
+                                    <img ng-src="../../../../../includes/img/ao/{{productDetail.sketch}}" style="width:80px; height:auto" />
+                                    <label> <span ng-bind="productDetail.idProduct"></span> - <span ng-bind="productDetail.description"></span></label>
+
+                                </div>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-4 form-group ">
+                    <label class="input-title">Garment</label>
+                </div>
+                <div class="col-md-8 form-group ">
+                    <span class="garment" ng-bind="vmproduct.shipment.product.garmentCode"></span> - <span class="garment" ng-bind="vmproduct.shipment.product.version"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 ">
+            <table class="table-responsive table table-price ">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>On Price List</th>
+                        <th>Manual</th>
+                        <th>Custom</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Factory Price
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.priceList.factory"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.manual.factory"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.custom.factory"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.total.factory"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Agent Price
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.priceList.zone"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.manual.zone"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.custom.zone"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.total.zone"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Final Price
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.priceList.agent"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.manual.agent"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.custom.agent"></span>
+                        </td>
+                        <td class="font-normal">
+                            <span ng-bind="vmproduct.shipment.product.price.total.agent"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12 ">
+        <div class="col-md-3 form-group " style="padding-right:12px !important">
+            <label class="col-md-12"><span class="pull-left">Sketch</span><label> <br>
+            <a href="../../../../../includes/img/ao/{{vmproduct.shipment.product.sketch}}" data-lightbox="gallery">
+                <img class="img-responsive imgParts" ng-src="../../../../../includes/img/ao/{{vmproduct.shipment.product.sketch}}">
+            </a>
+        </div>
+        <div class="col-md-9 ">
+            <table class="table-responsive table-bshipmented table tbl-size ">
+                <thead>
+                    <tr>
+                        <th ng-repeat="sizeDetail in vmproduct.product.sizesDetail">{{sizeDetail.szd_size}}</th>
+                        <th>Units</th>
+                        <th>Grand Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center vert-align font-normal" rowspan="3" ng-repeat="sizeDetail in vmproduct.product.sizesDetail"><span ng-bind="vmproduct.product.sizesDetail[vmproduct.product.sizesDetail.indexOf(sizeDetail)].quantity"></span></td>
+                        <td class="text-center" rowspan="3"><span ng-bind="vmproduct.product.units"></span></td>
+                        <td class="text-center "><span ng-bind="vmproduct.product.price.grandTotal.factory"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center "><span ng-bind="vmproduct.product.price.grandTotal.zone"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center "><span ng-bind="vmproduct.product.price.grandTotal.agent"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="tabSize" class="col-md-12 nav nav-tabs" style="width:100% !important" ng-class="(vmproduct.shipment.product.code.length === 0) ? 'hidden' : ''">
+                 <uib-tabset active="vmproduct.activeTab">
+                    <uib-tab index="0" heading="Size" ng-click="vmproduct.changeSizeType(0)">
+
+                    </uib-tab>
+                    <uib-tab index="1 " heading="Name & Number" ng-click="vmproduct.changeSizeType(1)">
+
+                    </uib-tab>
+
+                </uib-tabset>
+            </div>
+            <div class="col-md-12" style="padding-right: 0px !important;">
+
+                <div style="margin-top: 3px" ng-include="vmproduct.tplAddSize">
+                </div>
+
+            </div>
+
+    </div>
+</div>
+<div>
+    <div class="col-md-12 " style="padding-right: 8px !important">
+        <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vmproduct.createshipment()" ng-disabled="!vmproduct.showAddProductButton()"><span>Add Product</span></button>
+    </div>
+
+</div>

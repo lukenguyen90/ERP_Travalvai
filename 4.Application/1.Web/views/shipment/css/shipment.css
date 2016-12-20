@@ -1,0 +1,161 @@
+#tab [class*="col-"] {
+    height: 42px !important;
+}
+
+#tab .row {
+    overflow: hidden;
+}
+
+#tab {
+    height: 42px !important;
+}
+
+#shipments-ctrl {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#tbl-shipment-list.table thead tr th {
+    font-size: 10px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    text-align: left !important;
+}
+
+#tbl-shipment-list.table tbody tr td,
+#tbl-shipment-list.table tfoot tr td {
+    font-size: 11px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    vertical-align: middle;
+}
+
+#filter {
+    height: 37px;
+    border-bottom: 1px solid #ddd
+}
+
+#filter [class*="col-"] {
+    padding-left: 0px;
+}
+
+#filter label {
+    margin-top: 9px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+#filter ol {
+    width: 75%;
+}
+
+.header-box {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px dotted #565252;
+}
+
+
+/*container*/
+
+#shipment-detail-ctrl .container {
+    padding-right: 0px;
+}
+
+
+/*shipment-info-ctrl*/
+
+#shipment-info-ctrl [class*="col-md-12"] {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#shipment-info-ctrl [class*="col-md-2"] {
+    padding-left: 0px;
+}
+
+#shipment-info-ctrl .last-column {
+    padding-right: 0px;
+}
+
+#shipment-info-ctrl .btn-save-shipment {
+    width: 67%;
+    height: 22px;
+    padding: 0px 0px;
+}
+
+#shipment-info-ctrl .form-group {
+    margin-bottom: 5px;
+}
+
+#shipment-info-ctrl label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#shipment-info-ctrl input {
+    height: 22px;
+    font-size: 11px;
+    float: right;
+    width: 67%;
+}
+
+#shipment-info-ctrl .form-control[disabled] {
+    background-color: #f3f3f3;
+}
+
+#shipment-info-ctrl .nya-bs-select {
+    width: 67%;
+    height: 22px;
+    font-size: 11px;
+    float: right;
+}
+
+#shipment-info-ctrl .nya-bs-select input {
+    width: 100%;
+    height: 22px;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+#shipment-info-ctrl .nya-bs-select .btn {
+    height: 22px;
+    font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+/*shipment-info-ctrl*/
+
+
+/*shipment-items-ctrl*/
+
+#shipment-items-ctrl {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.btn-add-box {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 22px;
+    margin-bottom: 2px;
+}
+
+
+/*shipment-items-ctrl*/
+
+#shipment-detail-ctrl .modal-lg-box {
+    width: 900px;
+}
+
+#add-shipment-ctrl input {
+    font-size: 12px;
+    font-weight: normal;
+}

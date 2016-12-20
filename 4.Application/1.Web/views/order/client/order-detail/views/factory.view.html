@@ -1,0 +1,303 @@
+<!--Order Information-->
+
+<legend><i class="fa fa-minus" aria-hidden="true" ng-click='toggle($event, "order-info-ctrl")'></i> Order Information</legend>
+<div id="order-info-ctrl" class="row">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="col-md-12 form-group"><label><strong>Order</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.id"></span>
+                </label>
+            </div>
+            <div class="col-md-12 form-group"><label><strong>Date</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.date"></span>
+                </label>
+            </div>
+            <div class="col-md-12 form-group"><label><strong>Units</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.units"></span>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12 form-group"><label><strong>Customer</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.customer.description"></span>
+                </label>
+            </div>
+            <div class="col-md-12 form-group"><label><strong>Agent</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.agent.description"></span>
+                </label>
+            </div>
+            <div class="col-md-12 form-group"><label><strong>Zone</strong></label>
+                <label class="pull-right label-value">
+                    <span class="pull-left" ng-bind="vmOrderDetail.order.zone.description"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <strong>Description</strong>
+                </div>
+                <div class="col-md-10">
+                   <input type="text" class="form-control pull-right" ng-model="vmOrderDetail.order.description" style="width:100% !important">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <strong>Offer</strong>
+                </div>
+                <div class="col-md-4" style="padding-left:15px !important">
+                   <input type="text " class="form-control" style="width: 100% !important;"ng-model="vmOrderDetail.order.offer">
+                </div>
+                <div class="col-md-2 text-left">
+                    <strong>Type</strong>
+                </div>
+                <div class="col-md-4" style="padding-right:15px !important">
+                   <ol class="nya-bs-select pull-right" style="width: 100% !important;" ng-model="vmOrderDetail.order.type" data-size="10 " data-live-search="true">
+                        <li nya-bs-option="type in vmOrderDetail.types ">
+                            <a>
+                                {{ type.ot_description }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <strong>Condition</strong>
+                </div>
+                <div class="col-md-4" style="padding-left:15px !important">
+                   <ol class="col-md-8 nya-bs-select pull-right " style="width: 100% !important;" ng-model="vmOrderDetail.order.condition" data-size="10 " data-live-search="true">
+                            <li nya-bs-option="condition in vmOrderDetail.conditions ">
+                                <a>
+                                    {{ condition.oc_description }}
+
+                                </a>
+                            </li>
+                        </ol>
+                </div>
+                <div class="col-md-2 text-left">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-md-4" style="padding-right:15px !important">
+                   <span class="pull-left" ng-bind="vmOrderDetail.order.status"></span>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+<!--Delivery Information-->
+<legend><i class="fa fa-minus" aria-hidden="true" ng-click='toggle($event, "delivery-info-ctrl")'></i> <strong>Delivery Information</strong></legend>
+<div id="delivery-info-ctrl" class="row">
+    <div class="col-md-3 factory-info ">
+        <div class="col-md-12 form-group delivery-detail"><strong>Factory</strong></div>
+        <div class="col-md-12 form-group delivery-detail-value">
+            <strong>Confirmation Date</strong>
+            <input type="text" class="form-control pull-right" id="fac_confirmdate" ng-model="vmOrderDetail.order.deliveryFactory.confirmationDate">
+        </div>
+
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Delivery Date</strong>
+            <input type="text" class="form-control pull-right" id="fac_deliverydate" ng-model="vmOrderDetail.order.deliveryFactory.deliveryDate">
+        </div>
+
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Value</strong>
+            <label class="pull-right label-value">
+                <span ng-bind="formatNumberThousand(vmOrderDetail.order.deliveryFactory.value, 2)"></span>
+                <span ng-bind="vmOrderDetail.order.deliveryFactory.currency"></span>
+            </label>
+        </div>
+
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Delivered</strong>
+            <label class="pull-right label-value">
+                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryFactory.delivered"></span>
+            </label>
+        </div>
+
+        <div class="col-md-12 form-group delivery-detail-value"><strong>To Deliver</strong>
+            <label class="pull-right label-value">
+                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryFactory.toDeliver"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-md-3 zone-info">
+        <div class="col-md-12 form-group delivery-detail"><strong>Zone</strong></div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Confirmation Date</strong>
+            <input type="text" class="form-control pull-right" id="zone_confirmdate" ng-model="vmOrderDetail.order.deliveryZone.confirmationDate">
+        </div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Delivery Date</strong>
+            <input type="text" class="form-control pull-right" id="zone_deliverydate" ng-model="vmOrderDetail.order.deliveryZone.deliveryDate">
+        </div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Price List</strong>
+            <label class="pull-right label-value">
+                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryFactory.priceList"></span>
+            </label>
+        </div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Value</strong>
+            <label class="pull-right">
+                <span ng-bind="formatNumberThousand(vmOrderDetail.order.deliveryZone.value, 2)"></span>
+                <span ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+            </label>
+        </div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>Delivered</strong>
+            <label class="pull-right">
+                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryZone.delivered"></span>
+            </label>
+        </div>
+        <div class="col-md-12 form-group delivery-detail-value"><strong>To Deliver</strong>
+            <label class="pull-right">
+                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryZone.toDeliver"></span>
+            </label>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 agent-info" id="agent-info-delivery-ctrl">
+        <div class="row" style="padding-right: 9px">
+            <div class="col-md-12 form-group delivery-detail"><strong>Agent</strong></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-12 form-group delivery-detail-value"><strong>Order Date</strong>
+                    <label class="pull-right">
+                        <span class="pull-left" ng-bind="vmOrderDetail.order.orderDate"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-12 form-group delivery-detail-value"><strong>Delivery Date</strong>
+                    <input type="text" class="form-control pull-right" id="agent_deliverydate" ng-model="vmOrderDetail.order.deliveryAgent.deliveryDate">
+                </div>
+
+                <div class="col-md-12 form-group delivery-detail-value"><strong>Price List</strong>
+                    <label class="pull-right">
+                        <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryAgent.priceList"></span>
+                    </label>
+                </div>
+
+                <div class="col-md-12 form-group delivery-detail-value"><strong>Delivered</strong>
+                    <label class="pull-right">
+                        <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryAgent.delivered"></span>
+                    </label>
+                </div>
+                <div class="col-md-12 form-group delivery-detail-value"><strong>To Deliver</strong>
+                    <label class="pull-right">
+                        <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryAgent.toDeliver"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row" style="padding-left: 15px;">
+                    <div class="col-md-12 form-group delivery-detail-value" id="payment"><strong>Payment</strong>
+                        <ol class="nya-bs-select pull-right" style="width: 74.5% !important"ng-model="vmOrderDetail.order.payment" data-size="10 " data-live-search="true">
+                            <li nya-bs-option="payment in vmOrderDetail.payments ">
+                                <a>
+                                    {{payment.pay_code}} - {{ payment.pay_description }}
+
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-left: 15px;">
+                    <div class="col-md-3 form-group delivery-detail-value" style="padding-left: 0px;">
+                        <label class="pull-left">
+                         <strong>Value</strong>
+                        </label>
+                    </div>
+                    <div class="col-md-9 form-group delivery-detail-value" id="payment" style="padding-left: 0px;">
+                        <label class="pull-left" style="margin-left: 5px">
+                            <span ng-bind="formatNumberThousand(vmOrderDetail.order.deliveryAgent.value, 2)"></span>
+                            <span ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6" style="padding-right: 0px">
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Discount 1 (%)</strong>
+                            <label class="pull-right" style="margin-bottom: 0px;">
+                                <input type=" text " class="form-control pull-left discount " ng-model="vmOrderDetail.order.discount1 ">
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Value Disc 1</strong>
+                            <label class="pull-right ">
+                                <span ng-bind="formatNumberThousand(vmOrderDetail.order.value_discount1, 2)"></span>
+                                <span ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Remain Disc 1</strong>
+                            <label class="pull-right ">
+                                <span ng-bind="formatNumberThousand(vmOrderDetail.order.remain_discount1, 2)"></span>
+                                <span ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="padding-right: 0px">
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Discount 2 (%)</strong>
+                            <label class="pull-right" style="margin-bottom: 0px;">
+                                <input type="text" class="form-control pull-left discount" ng-model="vmOrderDetail.order.discount2 ">
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Value Disc 2</strong>
+                            <label class="pull-right ">
+                                <span ng-bind="formatNumberThousand(vmOrderDetail.order.value_discount2, 2)"></span>
+                                <span ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group delivery-detail-value"><strong>Remain Disc 2</strong>
+                            <label class="pull-right ">
+                                <span class="pull-left " ng-bind="formatNumberThousand(vmOrderDetail.order.remain_discount2, 2)"></span>
+                                <span class="pull-left" ng-bind="vmOrderDetail.order.deliveryZone.currency"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <button type="button " style="margin-right: 18px !important;" class="btn btn-sm btn-info pull-right" ng-click="vmOrderDetail.updateOrder()" ng-show="vmOrderDetail.isAllowUpdateOrder()">Update Order</button>
+</div>
+
+<!--Order Detail-->
+<legend><i class="fa fa-minus" aria-hidden="true" ng-click='toggle($event, "product-list-ctrl")'></i> Product List</legend>
+<div id="product-list-ctrl" class="row">
+    <div class="col-md-12 " style="padding-left:16px !important; ">
+        <div id="tab" class="nav nav-tabs">
+            <div class="row col-md-10">
+                <uib-tabset active="vmOrderDetail.activeTab">
+                    <uib-tab index="0 " heading="Line View " ng-click="vmOrderDetail.showProductsLine('factory') ">
+
+                    </uib-tab>
+                    <uib-tab index="1 " heading="Size View " ng-click="vmOrderDetail.showProductsSize('factory') ">
+
+                    </uib-tab>
+
+                </uib-tabset>
+            </div>
+            <div>
+                <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vmOrderDetail.showAddProductPopup('factory')"ng-show="vmOrderDetail.allowUpdateProduct()">Add Product</button>
+            </div>
+        </div>
+
+        <!--Tab Content-->
+        <div class="col-md-12 " style="margin-top:5px; ">
+        </div>
+
+        <div ng-include="vmOrderDetail.tplProducts" autoscroll='false'></div>
+        <!--/Tab Content-->
+    </div>
+
+</div>

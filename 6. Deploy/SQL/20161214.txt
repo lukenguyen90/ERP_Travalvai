@@ -1,0 +1,4 @@
+ALTER TABLE `travalvai`.`customer` 
+CHANGE COLUMN `cs_name` `cs_name` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL
+ALTER TABLE `sizes_details`
+	CHANGE COLUMN `szd_position` `szd_position` INT(11) NULL DEFAULT NULL AFTER `id_size`;

@@ -1,0 +1,3 @@
+ALTER TABLE 'costing_versions' CHANGE COLUMN 'cv_version' 'cv_version' VARCHAR(255) NOT NULL;
+
+ALTER TABLE 'product' CHANGE COLUMN 'pr_web' 'pr_web' BIT NULL DEFAULT 0;

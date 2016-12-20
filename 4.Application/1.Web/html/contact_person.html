@@ -1,0 +1,534 @@
+<!-- 
+	    <div class="modal-content">
+	      	<div class="modal-header">
+	        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        	<h4 class="modal-title">Add Contact</h4>
+	      	</div>
+	      	<div class="modal-body">
+	      		<ul class="nav nav-tabs">
+				  	<li class="active"><a data-toggle="tab" href="#contactTab1">Information</a></li>
+				  	<li><a data-toggle="tab" href="#contactTab2">Shipping Address</a></li>
+				  	<li><a data-toggle="tab" href="#contactTab3">Person List</a></li>
+				</ul>
+				<div class="tab-content">
+					<form class="form-horizontal" name="userFormContact" ng-submit="submitForm()" novalidate>
+					  	<div id="contactTab1" class="tab-pane fade in active">
+							<input type='hidden' name="id_Contact" id="id_Contact" value="0">
+                            <div class="form-group" >
+                                <label class="col-md-2 control-label text-left">Name</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cn_name.$invalid && !userFormContact.cn_name.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cn_name" id="cn_name" ng-model="contact.cn_name" ng-pattern="regex"  required value="123">
+                                        <p ng-show="userFormContact.cn_name.$error.required && !userFormContact.cn_name.$pristine" class="help-block">Name is required</p>
+                                        <p ng-show="userFormContact.cn_name.$error.pattern  && !userFormContact.cn_name.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label text-left">VAT code</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_vat_code.$invalid && !userFormContact.cts_vat_code.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_vat_code" id="cts_vat_code" ng-model="contact.cts_vat_code" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_vat_code.$error.required && !userFormContact.cts_vat_code.$pristine" class="help-block">VAT code is required</p>
+                                        <p ng-show="userFormContact.cts_vat_code.$error.pattern  && !userFormContact.cts_vat_code.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+
+                                <label class="col-md-2 control-label text-left">Type</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_type.$invalid && !userFormContact.cts_type.$pristine}">
+                                    <select class="form-control" id="cts_type" name="cts_type" ng-model="contact.cts_type" ng-options="lang.id as lang.name for lang in typeOptions" required>
+                                        <option value="">Choose</option>
+                                    </select>
+                                    <p ng-show="userFormContact.cts_type.$invalid && !userFormContact.cts_type.$pristine" class="help-block">Please choose Type</p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':userFormContact.cts_address_1.$error.required}">
+                                <label class="col-md-2 control-label text-left">Address 1</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_address_1" id="cts_address_1" ng-model="contact.cts_address_1" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_address_1.$error.required && !userFormContact.cts_address_1.$pristine" class="help-block">Address 1 is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-md-2 control-label text-left">Address 2</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_address_2" id="cts_address_2" ng-model="contact.cts_address_2" ng-pattern="regex"  required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label text-left">Address 3</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_address_3" id="cts_address_3" ng-model="contact.cts_address_3" ng-pattern="regex"  required>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-md-2 control-label text-left">City</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_city.$invalid && !userFormContact.cts_city.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_city" id="cts_city" ng-model="contact.cts_city" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_city.$error.required && !userFormContact.cts_city.$pristine" class="help-block">City is required</p>
+                                        <p ng-show="userFormContact.cts_city.$error.pattern  && !userFormContact.cts_city.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                                <label class="col-md-2 control-label text-left">Province</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_province.$invalid && !userFormContact.cts_province.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_province" id="cts_province" ng-model="contact.cts_province" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_province.$error.required && !userFormContact.cts_province.$pristine" class="help-block">Province is required</p>
+                                        <p ng-show="userFormContact.cts_province.$error.pattern  && !userFormContact.cts_province.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-md-2 control-label text-left">Zip code</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_zip_code.$invalid && !userFormContact.cts_zip_code.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_zip_code" id="cts_zip_code" ng-model="contact.cts_zip_code" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_zip_code.$error.required && !userFormContact.cts_zip_code.$pristine" class="help-block">Zip code is required</p>
+                                        <p ng-show="userFormContact.cts_zip_code.$error.pattern  && !userFormContact.cts_zip_code.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                                <label class="col-md-2 control-label text-left">Country</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_country.$invalid && !userFormContact.cts_country.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_country" id="cts_country" ng-model="contact.cts_country" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_country.$error.required && !userFormContact.cts_country.$pristine" class="help-block">Country is required</p>
+                                        <p ng-show="userFormContact.cts_country.$error.pattern  && !userFormContact.cts_country.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                            </div>                                                                      
+
+                            
+                            <div class="form-group">
+                                <label class="col-md-2 control-label text-left">Telephone</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_phone.$invalid && !userFormContact.cts_phone.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_phone" id="cts_phone" ng-model="contact.cts_phone" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_phone.$error.required && !userFormContact.cts_phone.$pristine" class="help-block">Telephone is required</p>
+                                        <p ng-show="userFormContact.cts_phone.$error.pattern  && !userFormContact.cts_phone.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                                <label class="col-md-2 control-label text-left">Email</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_email.$error.required}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_email" id="cts_email" ng-model="contact.cts_email" ng-pattern="regex_email"  required>
+                                        <p ng-show="userFormContact.cts_email.$error.required && !userFormContact.cts_email.$pristine" class="help-block">Email is required</p>
+                                        <p ng-show="userForm.cts_email.$error.pattern  && !userForm.cts_email.$pristine" class="help-block">Email not valid</p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':userFormContact.cts_notes.$error.required}">
+                                <label class="col-md-2 control-label text-left">Notes</label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" rows="5" placeholder="" type="text" name="cts_notes" id="cts_notes" ng-model="contact.cts_notes" ng-pattern="regex"  required></textarea>
+                                        <p ng-show="userFormContact.cts_notes.$error.required && !userFormContact.cts_notes.$pristine" class="help-block">Notes is required</p>
+                                </div>
+                            </div>
+					  	</div>
+
+					  	<div id="contactTab2" class="tab-pane fade">
+							<div class="form-group" >
+                                <label class="col-md-2 control-label text-left">SH Name</label>
+                                <div class="col-md-4"  ng-class="{'has-error':userFormContact.cts_sh_name.$invalid && !userFormContact.cts_sh_name.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_name" id="cts_sh_name" ng-model="contact.cts_sh_name" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_name.$error.required && !userFormContact.cts_sh_name.$pristine" class="help-block">SH Name is required</p>
+                                        <p ng-show="userFormContact.cts_sh_name.$error.pattern  && !userFormContact.cts_sh_name.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                                <label class="col-md-2 control-label text-left">SH Zip Code</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_zip_code.$invalid && !userFormContact.cts_sh_zip_code.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_zip_code" id="cts_sh_zip_code" ng-model="contact.cts_sh_zip_code" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_zip_code.$error.required && !userFormContact.cts_sh_zip_code.$pristine" class="help-block">SH Zip Code is required</p>
+                                        <p ng-show="userFormContact.cts_sh_zip_code.$error.pattern  && !userFormContact.cts_sh_zip_code.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_1.$error.required}">
+                                <label class="col-md-2 control-label text-left">SH Address 1</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_address_1" id="cts_sh_address_1" ng-model="contact.cts_sh_address_1" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_address_1.$error.required && !userFormContact.cts_sh_address_1.$pristine" class="help-block">SH Address 1 is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_2.$error.required}">
+                                <label class="col-md-2 control-label text-left">SH Address 2</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_address_2" id="cts_sh_address_2" ng-model="contact.cts_sh_address_2" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_address_2.$error.required && !userFormContact.cts_sh_address_2.$pristine" class="help-block">SH Address 2 is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_3.$error.required}">
+                                <label class="col-md-2 control-label text-left">SH Address 3</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_address_3" id="cts_sh_address_3" ng-model="contact.cts_sh_address_3" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_address_3.$error.required && !userFormContact.cts_sh_address_3.$pristine" class="help-block">SH Address 3 is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-md-2 control-label text-left">SH City</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_city.$invalid && !userFormContact.cts_sh_city.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_city" id="cts_sh_city" ng-model="contact.cts_sh_city" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_city.$error.required && !userFormContact.cts_sh_city.$pristine" class="help-block">SH City is required</p>
+                                        <p ng-show="userFormContact.cts_sh_city.$error.pattern  && !userFormContact.cts_sh_city.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                                <label class="col-md-2 control-label text-left">SH Province</label>
+                                <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_province.$invalid && !userFormContact.cts_sh_province.$pristine}">
+                                    <input class="form-control" placeholder="" type="text" name="cts_sh_province" id="cts_sh_province" ng-model="contact.cts_sh_province" ng-pattern="regex"  required>
+                                        <p ng-show="userFormContact.cts_sh_province.$error.required && !userFormContact.cts_sh_province.$pristine" class="help-block">Province is required</p>
+                                        <p ng-show="userFormContact.cts_sh_province.$error.pattern  && !userFormContact.cts_sh_province.$pristine" class="help-block">Can not enter special char</p>
+                                </div>
+                            </div>
+							<div class="form-group text-center">
+								<div class="btn bg-color-blueDark txt-color-white" id="btnAddRowContact" ng-disabled="userFormContact.$invalid"  ng-click="addRowContact()">
+									<i class="fa fa-save"></i>
+									&nbsp;Save
+								</div>
+								<div class="btn btn-default" id="btnRefresh">
+									<i class="fa fa-refresh"></i>
+									&nbsp;Refresh
+								</div>
+							</div>
+					  	</div>
+					  	
+				  	</form>
+				  	<div id="contactTab3" class="tab-pane fade">
+				    	<div class="row">
+							<div class="col-md-12">
+								<legend class="fcollapsible">Person Detail</legend>
+								<div class="fcontent">
+									<form class="form-horizontal" name="userForm" ng-submit="submitForm()" novalidate>
+										<input type='hidden' name="id_Person" id="id_Person" value="0">
+
+										<div class="form-group" ng-class="{'has-error':userForm.name.$invalid && !userForm.name.$pristine}">
+											<label class="col-md-2 control-label text-left">Name</label>
+											<div class="col-md-10">
+												<input class="form-control" placeholder="" type="text" name="name" id="name" ng-model="user.name" ng-pattern="regex"  required>
+												<p ng-show="userForm.name.$error.required && !userForm.name.$pristine" class="help-block">Name is required</p>
+                                                <p ng-show="userForm.name.$error.pattern  && !userForm.name.$pristine" class="help-block">Can not enter special char</p>
+											</div>
+										</div>
+
+										<div class="form-group" ng-class="{'has-error':userForm.pos.$invalid && !userForm.pos.$pristine}">
+											<label class="col-md-2 control-label text-left">Position</label>
+											<div class="col-md-10">
+												<input class="form-control" placeholder="" type="text" name="pos" id="pos" ng-model="user.pos" ng-pattern="regex"  required>
+												<p ng-show="userForm.pos.$error.required && !userForm.pos.$pristine" class="help-block">Position is required</p>
+                                                <p ng-show="userForm.pos.$error.pattern  && !userForm.pos.$pristine" class="help-block">Can not enter special char</p>
+											</div>
+										</div>
+
+										<div class="form-group" ng-class="{'has-error':userForm.phone.$invalid && !userForm.phone.$pristine}">
+											<label class="col-md-2 control-label text-left">Telephone</label>
+											<div class="col-md-10">
+												<input class="form-control" placeholder="" type="text" name="phone" id="phone" ng-model="user.phone" ng-pattern="regex"  required>
+												<p ng-show="userForm.phone.$error.required && !userForm.phone.$pristine" class="help-block">Telephone is required</p>
+                                                <p ng-show="userForm.phone.$error.pattern  && !userForm.phone.$pristine" class="help-block">Can not enter special char</p>
+											</div>
+										</div>
+
+										<div class="form-group" ng-class="{'has-error':userForm.email.$invalid && !userForm.email.$pristine}">
+											<label class="col-md-2 control-label text-left">Email</label>
+											<div class="col-md-10">
+												<input class="form-control" placeholder="" type="text" name="email" id="email" ng-model="user.email" ng-pattern="regex_email"  required>
+												<p ng-show="userForm.email.$error.required && !userForm.email.$pristine" class="help-block">Email is required</p>
+                                                <p ng-show="userForm.email.$error.pattern  && !userForm.email.$pristine" class="help-block">Email not valid</p>
+											</div>
+										</div>
+										
+										<div class="form-group" ng-class="{'has-error':userForm.bday.$invalid && !userForm.bday.$pristine}">
+											<label class="col-md-2 control-label text-left">Birthday</label>
+											<div class="col-md-10">
+												<input class="form-control inputDate" placeholder="" type="text" name="bday" id="bday" ng-model="user.bday" ng-pattern="regex"  required>
+												<p ng-show="userForm.bday.$error.required && !userForm.bday.$pristine" class="help-block">Birthday is required</p>
+                                                <p ng-show="userForm.bday.$error.pattern  && !userForm.bday.$pristine" class="help-block">Can not enter special char</p>
+											</div>
+										</div>
+
+										<div class="form-group" ng-class="{'has-error':userForm.note.$invalid && !userForm.note.$pristine}">
+											<label class="col-md-2 control-label text-left">Notes</label>
+											<div class="col-md-10">
+												<input class="form-control" placeholder="" type="text" name="note" id="note" ng-model="user.note" ng-pattern="regex"  required>
+												<p ng-show="userForm.note.$error.required && !userForm.note.$pristine" class="help-block">Notes is required</p>
+                                                <p ng-show="userForm.note.$error.pattern  && !userForm.note.$pristine" class="help-block">Can not enter special char</p>
+											</div>
+										</div>
+
+										<div class="form-group text-center">
+											<div class="btn bg-color-blueDark txt-color-white" id="btnAddRow" ng-click="addRow()">
+												<i class="fa fa-save"></i>
+												&nbsp;Add/Update
+											</div>
+											<div class="btn btn-default" id="btnRefresh" ng-click="refresh()">
+												<i class="fa fa-refresh"></i>
+												&nbsp;Refresh
+											</div>
+										</div>
+									</form>
+								</div>		
+							</div>
+							<div class="col-md-12" >
+								<fieldset>
+									<legend class="fcollapsible">Person List</legend>
+
+									<div class="fcontent">
+										<table class="table table-striped table-bordered" width="100%" datatable dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance">
+                                        </table>	
+									</div>
+								</fieldset>
+							</div>
+						</div>
+				  	</div>
+				</div>
+			        	
+	      	</div>
+	    </div> -->
+
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Contact</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#contactTab1">Information</a></li>
+                        <li><a data-toggle="tab" href="#contactTab2">Shipping Address</a></li>
+                        <li><a data-toggle="tab" href="#contactTab3">Person List</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <form class="form-horizontal" name="userFormContact" ng-submit="showCase.submitForm()" novalidate>
+                            <div id="contactTab1" class="tab-pane fade in active">
+                                <input type='hidden' name="id_Contact" id="id_Contact" value="0">
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">Name</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cn_name.$invalid && !userFormContact.cn_name.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cn_name" id="cn_name" ng-model="showCase.contact.cn_name" ng-pattern="showCase.regex"  required value="123">
+                                            <p ng-show="userFormContact.cn_name.$error.required && !userFormContact.cn_name.$pristine" class="help-block">Name is required</p>
+                                            <p ng-show="userFormContact.cn_name.$error.pattern  && !userFormContact.cn_name.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label text-left">VAT code</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_vat_code.$invalid && !userFormContact.cts_vat_code.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_vat_code" id="cts_vat_code" ng-model="showCase.contact.cts_vat_code" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_vat_code.$error.required && !userFormContact.cts_vat_code.$pristine" class="help-block">VAT code is required</p>
+                                            <p ng-show="userFormContact.cts_vat_code.$error.pattern  && !userFormContact.cts_vat_code.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+
+                                    <label class="col-md-2 control-label text-left">Type</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_type.$invalid && !userFormContact.cts_type.$pristine}">
+                                        <select class="form-control" id="cts_type" name="cts_type" ng-model="showCase.contact.cts_type" ng-options="lang.id as lang.name for lang in showCase.typeOptions" required>
+                                            <option value="">Choose</option>
+                                        </select>
+                                        <p ng-show="userFormContact.cts_type.$invalid && !userFormContact.cts_type.$pristine" class="help-block">Please choose Type</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':userFormContact.cts_address_1.$error.required}">
+                                    <label class="col-md-2 control-label text-left">Address 1</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_address_1" id="cts_address_1" ng-model="showCase.contact.cts_address_1" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_address_1.$error.required && !userFormContact.cts_address_1.$pristine" class="help-block">Address 1 is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">Address 2</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_address_2" id="cts_address_2" ng-model="showCase.contact.cts_address_2" ng-pattern="showCase.regex"  required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label text-left">Address 3</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_address_3" id="cts_address_3" ng-model="showCase.contact.cts_address_3" ng-pattern="showCase.regex"  required>
+                                    </div>
+                                </div>
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">City</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_city.$invalid && !userFormContact.cts_city.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_city" id="cts_city" ng-model="showCase.contact.cts_city" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_city.$error.required && !userFormContact.cts_city.$pristine" class="help-block">City is required</p>
+                                            <p ng-show="userFormContact.cts_city.$error.pattern  && !userFormContact.cts_city.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                    <label class="col-md-2 control-label text-left">Province</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_province.$invalid && !userFormContact.cts_province.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_province" id="cts_province" ng-model="showCase.contact.cts_province" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_province.$error.required && !userFormContact.cts_province.$pristine" class="help-block">Province is required</p>
+                                            <p ng-show="userFormContact.cts_province.$error.pattern  && !userFormContact.cts_province.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">Zip code</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_zip_code.$invalid && !userFormContact.cts_zip_code.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_zip_code" id="cts_zip_code" ng-model="showCase.contact.cts_zip_code" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_zip_code.$error.required && !userFormContact.cts_zip_code.$pristine" class="help-block">Zip code is required</p>
+                                            <p ng-show="userFormContact.cts_zip_code.$error.pattern  && !userFormContact.cts_zip_code.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                    <label class="col-md-2 control-label text-left">Country</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_country.$invalid && !userFormContact.cts_country.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_country" id="cts_country" ng-model="showCase.contact.cts_country" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_country.$error.required && !userFormContact.cts_country.$pristine" class="help-block">Country is required</p>
+                                            <p ng-show="userFormContact.cts_country.$error.pattern  && !userFormContact.cts_country.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                </div>                                                                      
+
+                                
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label text-left">Telephone</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_phone.$invalid && !userFormContact.cts_phone.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_phone" id="cts_phone" ng-model="showCase.contact.cts_phone" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_phone.$error.required && !userFormContact.cts_phone.$pristine" class="help-block">Telephone is required</p>
+                                            <p ng-show="userFormContact.cts_phone.$error.pattern  && !userFormContact.cts_phone.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                    <label class="col-md-2 control-label text-left">Email</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_email.$error.required}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_email" id="cts_email" ng-model="showCase.contact.cts_email" ng-pattern="showCase.regex_email"  required>
+                                            <p ng-show="userFormContact.cts_email.$error.required && !userFormContact.cts_email.$pristine" class="help-block">Email is required</p>
+                                            <p ng-show="userForm.cts_email.$error.pattern  && !userForm.cts_email.$pristine" class="help-block">Email not valid</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':userFormContact.cts_notes.$error.required}">
+                                    <label class="col-md-2 control-label text-left">Notes</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" rows="5" placeholder="" type="text" name="cts_notes" id="cts_notes" ng-model="showCase.contact.cts_notes" ng-pattern="showCase.regex"  required></textarea>
+                                            <p ng-show="userFormContact.cts_notes.$error.required && !userFormContact.cts_notes.$pristine" class="help-block">Notes is required</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="contactTab2" class="tab-pane fade">
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">SH Name</label>
+                                    <div class="col-md-4"  ng-class="{'has-error':userFormContact.cts_sh_name.$invalid && !userFormContact.cts_sh_name.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_name" id="cts_sh_name" ng-model="showCase.contact.cts_sh_name" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_name.$error.required && !userFormContact.cts_sh_name.$pristine" class="help-block">SH Name is required</p>
+                                            <p ng-show="userFormContact.cts_sh_name.$error.pattern  && !userFormContact.cts_sh_name.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                    <label class="col-md-2 control-label text-left">SH Zip Code</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_zip_code.$invalid && !userFormContact.cts_sh_zip_code.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_zip_code" id="cts_sh_zip_code" ng-model="showCase.contact.cts_sh_zip_code" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_zip_code.$error.required && !userFormContact.cts_sh_zip_code.$pristine" class="help-block">SH Zip Code is required</p>
+                                            <p ng-show="userFormContact.cts_sh_zip_code.$error.pattern  && !userFormContact.cts_sh_zip_code.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_1.$error.required}">
+                                    <label class="col-md-2 control-label text-left">SH Address 1</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_address_1" id="cts_sh_address_1" ng-model="showCase.contact.cts_sh_address_1" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_address_1.$error.required && !userFormContact.cts_sh_address_1.$pristine" class="help-block">SH Address 1 is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_2.$error.required}">
+                                    <label class="col-md-2 control-label text-left">SH Address 2</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_address_2" id="cts_sh_address_2" ng-model="showCase.contact.cts_sh_address_2" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_address_2.$error.required && !userFormContact.cts_sh_address_2.$pristine" class="help-block">SH Address 2 is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':userFormContact.cts_sh_address_3.$error.required}">
+                                    <label class="col-md-2 control-label text-left">SH Address 3</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_address_3" id="cts_sh_address_3" ng-model="showCase.contact.cts_sh_address_3" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_address_3.$error.required && !userFormContact.cts_sh_address_3.$pristine" class="help-block">SH Address 3 is required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" >
+                                    <label class="col-md-2 control-label text-left">SH City</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_city.$invalid && !userFormContact.cts_sh_city.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_city" id="cts_sh_city" ng-model="showCase.contact.cts_sh_city" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_city.$error.required && !userFormContact.cts_sh_city.$pristine" class="help-block">SH City is required</p>
+                                            <p ng-show="userFormContact.cts_sh_city.$error.pattern  && !userFormContact.cts_sh_city.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                    <label class="col-md-2 control-label text-left">SH Province</label>
+                                    <div class="col-md-4" ng-class="{'has-error':userFormContact.cts_sh_province.$invalid && !userFormContact.cts_sh_province.$pristine}">
+                                        <input class="form-control" placeholder="" type="text" name="cts_sh_province" id="cts_sh_province" ng-model="showCase.contact.cts_sh_province" ng-pattern="showCase.regex"  required>
+                                            <p ng-show="userFormContact.cts_sh_province.$error.required && !userFormContact.cts_sh_province.$pristine" class="help-block">Province is required</p>
+                                            <p ng-show="userFormContact.cts_sh_province.$error.pattern  && !userFormContact.cts_sh_province.$pristine" class="help-block">Can not enter special char</p>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <div class="btn bg-color-blueDark txt-color-white" id="btnAddRowContact" ng-disabled="userFormContact.$invalid"  ng-click="showCase.addRowContact()">
+                                        <i class="fa fa-save"></i>
+                                        &nbsp;Save
+                                    </div>
+                                    <div class="btn btn-default" id="btnRefresh">
+                                        <i class="fa fa-refresh"></i>
+                                        &nbsp;Refresh
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </form>
+                        <div id="contactTab3" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <legend class="fcollapsible">Person Detail</legend>
+                                    <div class="fcontent">
+                                        <form class="form-horizontal" name="userForm" ng-submit="showCase.submitForm()" novalidate>
+                                            <input type='hidden' name="id_Person" id="id_Person" value="0">
+
+                                            <div class="form-group" ng-class="{'has-error':userForm.name.$invalid && !userForm.name.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Name</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" placeholder="" type="text" name="name" id="name" ng-model="showCase.user.name" ng-pattern="showCase.regex"  required>
+                                                    <p ng-show="userForm.name.$error.required && !userForm.name.$pristine" class="help-block">Name is required</p>
+                                                    <p ng-show="userForm.name.$error.pattern  && !userForm.name.$pristine" class="help-block">Can not enter special char</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" ng-class="{'has-error':userForm.pos.$invalid && !userForm.pos.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Position</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" placeholder="" type="text" name="pos" id="pos" ng-model="showCase.user.pos" ng-pattern="showCase.regex"  required>
+                                                    <p ng-show="userForm.pos.$error.required && !userForm.pos.$pristine" class="help-block">Position is required</p>
+                                                    <p ng-show="userForm.pos.$error.pattern  && !userForm.pos.$pristine" class="help-block">Can not enter special char</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" ng-class="{'has-error':userForm.phone.$invalid && !userForm.phone.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Telephone</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" placeholder="" type="text" name="phone" id="phone" ng-model="showCase.user.phone" ng-pattern="showCase.regex"  required>
+                                                    <p ng-show="userForm.phone.$error.required && !userForm.phone.$pristine" class="help-block">Telephone is required</p>
+                                                    <p ng-show="userForm.phone.$error.pattern  && !userForm.phone.$pristine" class="help-block">Can not enter special char</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" ng-class="{'has-error':userForm.email.$invalid && !userForm.email.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Email</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" placeholder="" type="text" name="email" id="email" ng-model="showCase.user.email" ng-pattern="showCase.regex_email"  required>
+                                                    <p ng-show="userForm.email.$error.required && !userForm.email.$pristine" class="help-block">Email is required</p>
+                                                    <p ng-show="userForm.email.$error.pattern  && !userForm.email.$pristine" class="help-block">Email not valid</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group" ng-class="{'has-error':userForm.bday.$invalid && !userForm.bday.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Birthday</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control inputDate" placeholder="" type="text" name="bday" id="bday" ng-model="showCase.user.bday" ng-pattern="showCase.regex"  required>
+                                                    <p ng-show="userForm.bday.$error.required && !userForm.bday.$pristine" class="help-block">Birthday is required</p>
+                                                    <p ng-show="userForm.bday.$error.pattern  && !userForm.bday.$pristine" class="help-block">Can not enter special char</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" ng-class="{'has-error':userForm.note.$invalid && !userForm.note.$pristine}">
+                                                <label class="col-md-2 control-label text-left">Notes</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" placeholder="" type="text" name="note" id="note" ng-model="showCase.user.note" ng-pattern="showCase.regex"  required>
+                                                    <p ng-show="userForm.note.$error.required && !userForm.note.$pristine" class="help-block">Notes is required</p>
+                                                    <p ng-show="userForm.note.$error.pattern  && !userForm.note.$pristine" class="help-block">Can not enter special char</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <div class="btn bg-color-blueDark txt-color-white" id="btnAddRow" ng-click="showCase.addRow()">
+                                                    <i class="fa fa-save"></i>
+                                                    &nbsp;Add/Update
+                                                </div>
+                                                <div class="btn btn-default" id="btnRefresh" ng-click="showCase.refresh()">
+                                                    <i class="fa fa-refresh"></i>
+                                                    &nbsp;Refresh
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>      
+                                </div>
+                                <div class="col-md-12" >
+                                    <fieldset>
+                                        <legend class="fcollapsible">Person List</legend>
+
+                                        <div class="fcontent">
+                                            <table class="table table-striped table-bordered" width="100%" datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance">
+                                            </table>    
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            
+                </div>
+            </div>

@@ -1,0 +1,28 @@
+<form name="sizeForm" id="sizeForm">
+    <div class="col-md-4">
+        <input required placeholder="Name" class="form-control error-input" name="txtName" id="txtName" autofocus type="text" ng-model="vmSizeName.size.name" />
+    </div>
+    <div class="col-md-2">
+        <input required placeholder="Number" class="form-control error-input" type="text" id="txtNumber" name="txtNumber" ng-model="vmSizeName.size.number" only-number/></td>
+    </div>
+    <div class="col-md-3">
+        <div ng-class="!vmSizeName.hasSizeDetail() ? 'error' : ''">
+            <ol class="nya-bs-select" title="Choose size" ng-model="vmSizeName.size.code" data-size="10" id="cbSize" name="cbSize" data-live-search="true">
+                <li nya-bs-option="size in vmSizeName.product.sizesDetail">
+                    <a>
+                        <span ng-bind="size.szd_size"></span>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div ng-class="sizeForm.txtQuantity.$error.required? 'error' : ''">
+            <input required placeholder="Qty" class="form-control error-input" type="text" id="txtQuantity" name="txtQuantity" ng-model="vmSizeName.size.quantity" only-number/>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-xs btn-primary  pull-right" ng-click="vmSizeName.addSize()" ng-disabled="(vmSizeName.hasSizeDetail())">Add</button>
+    </div>
+
+</form>

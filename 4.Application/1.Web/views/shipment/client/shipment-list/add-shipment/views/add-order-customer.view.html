@@ -1,0 +1,90 @@
+<div ng-controller="AddshipmentCtrl as vmAddshipment" ng-init="vmAddshipment.init()" class="row small">
+
+
+    <legend class="popup-header"><span> <strong> Add New shipment</strong></span></legend>
+    <div>
+        <div class="col-md-4 form-group">
+            <label><strong>Description<strong></label>
+            <input type="text " class="form-control" ng-model="vmAddshipment.shipment.description">
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label><strong>Offer<strong></label>
+            <input type="text " class="form-control" ng-model="vmAddshipment.shipment.offer">
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label> <strong> Date </strong> </label>
+
+            <input type="text" class="form-control small dateInput" id="shipmentDate" name="shipmentDate" ng-model="vmAddshipment.shipment.date" placeholder="" ng-disabled="true">
+
+        </div>
+    </div>
+    <div>
+        <div class="col-md-4 form-group ">
+            <label><strong>shipment Condition</strong> <span ng-if="vmAddshipment.shipment.condition === null" class="required">*</span></label>
+            <ol class="nya-bs-select" ng-model="vmAddshipment.shipment.condition" data-size="10 " data-live-search="true">
+                <li nya-bs-option="conditions in vmAddshipment.conditions ">
+                    <a>
+                        {{ conditions.oc_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-4 form-group ">
+            <label><strong>shipment Type</strong> <span ng-if="vmAddshipment.shipment.type === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vmAddshipment.shipment.type" data-size="10 " data-live-search="true">
+                <li nya-bs-option="type in vmAddshipment.types ">
+                    <a>
+                        {{ type.ot_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+
+        <div class="col-md-4 form-group ">
+            <label><strong>shipment Status</strong> <span ng-if="vmAddshipment.shipment.status === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vmAddshipment.shipment.status" data-size="10 " data-live-search="true">
+                <li nya-bs-option="status in vmAddshipment.statusList ">
+                    <a>
+                        {{ status.os_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-4 form-group ">
+            <label><strong>Payment</strong> <span ng-if="vmAddshipment.shipment.payment === null" class="required">*</span></label>
+            <ol class="nya-bs-select " ng-model="vmAddshipment.shipment.payment" data-size="10 " data-live-search="true">
+                <li nya-bs-option="payment in vmAddshipment.payments ">
+                    <a>
+                        {{ payment.pay_description }}
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-4 form-group ">
+            <label><strong>Discount 1 (%)</strong></label>
+            <input type="text " class="form-control" ng-model="vmAddshipment.shipment.discount1">
+        </div>
+
+        <div class="col-md-4 form-group ">
+            <label><strong>Discount 2 (%)</strong></label>
+            <input type="text " class="form-control" ng-model="vmAddshipment.shipment.discount2">
+        </div>
+    </div>
+    
+    <div>
+        <div class="col-md-12">
+            <span class="pull-left font-normal">  (<span class="required">*</span>): Required field </span>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-12 ">
+            <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vmAddshipment.createshipmentInfo()" ng-disabled="!vmAddshipment.showAddProduct()">Save shipment</button>
+        </div>
+    </div>
+
+
+</div>

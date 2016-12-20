@@ -1,0 +1,13 @@
+ALTER TABLE travalvai.contact MODIFY cn_name longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_address_1 longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_address_2 longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_address_3 longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_city longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_province longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_zip_code longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_country longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_phone longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_email longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE travalvai.contact MODIFY cts_notes longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+

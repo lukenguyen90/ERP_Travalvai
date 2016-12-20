@@ -1,0 +1,28 @@
+<style>
+    #tbl-product-list-line.table thead tr th {
+        font-size: 10px !important;
+        text-align: left !important;
+    }
+    
+    #tbl-product-list-line.table tbody tr td {
+        font-weight: normal !important;
+    }
+    
+    #tbl-product-list-line.table tfoot tr td,
+    tbody tr td {
+        font-size: 12px !important;
+        vertical-align: middle !important;
+    }
+    
+    #tbl-product-list-line_wrapper {
+        width: 98.7% !important;
+    }
+</style>
+
+<div class="col-md-12" ng-controller="LineFactoryCtrl as vmLine" ng-init="vmLine.initFactory()">
+    <table id="tbl-product-list-line" class="table table-striped table-bordered" width="100%" datatable dt-options="vmLine.options" dt-columns="vmLine.columns" dt-instance="vmLine.instance">
+        <tfoot>
+            <tr></tr>
+        </tfoot>
+    </table>
+</div>

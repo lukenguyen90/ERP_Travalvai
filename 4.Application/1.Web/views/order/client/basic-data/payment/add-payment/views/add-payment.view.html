@@ -1,0 +1,58 @@
+<div ng-controller="AddPaymentCtrl as vmAddPayment" ng-init="vmAddPayment.init()" class="row small">
+    <legend class="popup-header"><span> <strong> Add New Payment</strong></span></legend>
+    <div>
+        <div class="col-md-4 form-group">
+            <label><strong>Payment Code<strong></label>
+            <input type="text" class="form-control" ng-model="vmAddPayment.payment.paymentcode">
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label><strong>Description (ML)<strong></label>
+            <input type="text" class="form-control" ng-model="vmAddPayment.payment.description">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-4 form-group ">
+            <label><strong>Downpayment<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.downpayment">
+        </div>
+
+        <div class="col-md-4 form-group ">
+            <label><strong>On Delivery<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.ondelivery">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-4 form-group ">
+            <label><strong>30 days<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.thirtydays">
+        </div>
+
+        <div class="col-md-4 form-group ">
+            <label><strong>60 days<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.sixtydays">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-4 form-group ">
+            <label><strong>Other<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.other">
+        </div>
+
+        <div class="col-md-4 form-group ">
+            <label><strong>Payment Day<strong></label>
+            <input type="number" class="form-control" ng-model="vmAddPayment.payment.paymentday">
+        </div>
+    </div>
+
+    <div>
+        <div class="col-md-12">
+            <span class="pull-left font-normal">  (<span class="required">*</span>): Required field </span>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-12 ">
+            <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vmAddPayment.createPaymentInfo()">Save Payment</button>
+        </div>
+    </div>
+</div>

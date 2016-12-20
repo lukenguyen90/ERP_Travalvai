@@ -1,0 +1,81 @@
+<div ng-controller="AddOrderCtrl as vmAddOrder" ng-init="vmAddOrder.init()" class="row small">
+    <legend class="popup-header"><span> <strong> Add New Order</strong></span></legend>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-8 form-group ">
+                <label><strong>Description</strong></label>
+                <input type="text " class="form-control" ng-model="vmAddOrder.order.description">
+            </div>
+            <div class="col-md-4 form-group">
+                <label><strong>Offer</strong></label>
+                <input type="text " class="form-control" ng-model="vmAddOrder.order.offer">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4 form-group">  
+                <label><strong>Order Condition</strong> <span ng-if="vmAddOrder.order.condition === null" class="required">*</span></label>
+                <ol class="nya-bs-select" ng-model="vmAddOrder.order.condition" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="conditions in vmAddOrder.conditions ">
+                        <a>
+                            {{ conditions.oc_description }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-md-4 form-group ">
+                <label><strong>Order Type</strong> <span ng-if="vmAddOrder.order.type === null" class="required">*</span></label>
+                <ol class="nya-bs-select " ng-model="vmAddOrder.order.type" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="type in vmAddOrder.types ">
+                        <a>
+                            {{ type.ot_description }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-md-4 form-group">
+                <label> <strong> Date </strong> </label>
+                <input type="text" class="form-control small dateInput" id="orderDate" name="orderDate" ng-model="vmAddOrder.order.date" placeholder="" ng-disabled="true">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4 form-group ">
+                <label><strong>Payment</strong> <span ng-if="vmAddOrder.order.payment === null" class="required">*</span></label>
+                <ol class="nya-bs-select " ng-model="vmAddOrder.order.payment" data-size="10 " data-live-search="true">
+                    <li nya-bs-option="payment in vmAddOrder.payments ">
+                        <a>
+                            {{ payment.pay_description }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+             <div class="col-md-4 form-group ">
+                <label><strong>Discount 1 (%)</strong></label>
+                <input type="text " class="form-control" ng-model="vmAddOrder.order.discount1">
+            </div>
+
+            <div class="col-md-4 form-group ">
+                <label><strong>Discount 2 (%)</strong></label>
+                <input type="text " class="form-control" ng-model="vmAddOrder.order.discount2">
+            </div>
+        </div>        
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4 form-group ">
+                <span class="pull-left font-normal">  (<span class="required">*</span>): Required field </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12 form-group ">
+                <button type="button " class="btn btn-sm btn-info pull-right " ng-click="vmAddOrder.createOrderInfo()" ng-disabled="!vmAddOrder.showAddProduct()" style="padding-right: 15px;">Save Order</button>
+            </div>
+        </div>
+    </div>
+</div>

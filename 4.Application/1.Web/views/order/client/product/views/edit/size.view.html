@@ -1,0 +1,18 @@
+<div ng-controller="EditSizeCtrl as sizeDetail" ng-init="sizeDetail.init()">
+    <table class="table-responsive table-bordered table tbl-size">
+        <thead>
+            <tr>
+                <th ng-repeat="sizeD in sizeDetail.sizeDetailList">{{sizeD.szd_size}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center vert-align" ng-repeat="SDetail in sizeDetail.sizeDetailList"><input type="text" value="" ng-model="sizeDetail.sizeDetailList[sizeDetail.sizeDetailList.indexOf(SDetail)].quantity" only-number/></td>
+                <td class="text-center">
+                    <button type="button " class="btn btn-sm btn-info" ng-click="sizeDetail.saveSizeQuantity()">Save</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

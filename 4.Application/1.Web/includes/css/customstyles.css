@@ -1,0 +1,63 @@
+.strongFont {
+    font-weight: bolder;
+}
+
+.no-padding {
+    padding: 0px ! important;
+}
+
+.full-width {
+    width: 100% ! important;
+}
+
+legend.popup-header {
+    background-color: #eee !important;
+    margin-top: -15px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+legend.popup-header span {
+    margin-left: 16px;
+}
+
+hr {
+    border-top: 1px dotted #a5a0a0 !important;
+}
+
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.vertical-bottom {
+    vertical-align: bottom !important;
+}
+
+.dt-toolbar input,
+.dt-toolbar select {
+    height: 32px !important;
+}
+
+.error {
+    border: 1px solid !important;
+    border-color: #b94a48 !important;
+    border-width: thin !important;
+}
+
+.error .error-input {
+    border: 1px solid !important;
+    border-color: #b94a48 !important;
+    border-width: thin !important;
+}
+
+.required {
+    color: #f00 !important;
+}
+
+.font-normal {
+    font-weight: normal;
+}
+
+.modal-header {
+    background-color: #eee;
+}
